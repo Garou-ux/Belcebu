@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31829.152
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Belcebu", "Belcebu\Belcebu.csproj", "{B55E2013-0B02-4C02-B214-9D0A272562FE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ERP_Belcebu", "ERP_Belcebu\ERP_Belcebu.csproj", "{223BE85F-877E-4D06-9AC6-B976C3C27695}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B55E2013-0B02-4C02-B214-9D0A272562FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B55E2013-0B02-4C02-B214-9D0A272562FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B55E2013-0B02-4C02-B214-9D0A272562FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B55E2013-0B02-4C02-B214-9D0A272562FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{223BE85F-877E-4D06-9AC6-B976C3C27695}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{223BE85F-877E-4D06-9AC6-B976C3C27695}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{223BE85F-877E-4D06-9AC6-B976C3C27695}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{223BE85F-877E-4D06-9AC6-B976C3C27695}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
