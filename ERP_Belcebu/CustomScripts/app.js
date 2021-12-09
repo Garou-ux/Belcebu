@@ -12,7 +12,16 @@
                 templateUrl: 'views/Catalogos/Usuarios.html',
                 controller: 'ctrlUsuarios'
             })
-
+            .state('SolicitudCompraLista', {
+                url: '/SolicitudCompraLista',
+                templateUrl: 'views/Procesos/SolicitudCompraLista.html',
+                controller : 'ctrlSolicitudCompraLista'
+            })
+            .state('SolicitudCompra',{
+                url: '/SolicitudCompra/:Id',
+                templateUrl: 'views/Procesos/SolicitudCompra.html',
+                controller : 'ctrlSolicitudCompra'
+            })
         $urlRouterProvider.otherwise('/');
     })
     .run(function ($rootScope, $templateCache) {

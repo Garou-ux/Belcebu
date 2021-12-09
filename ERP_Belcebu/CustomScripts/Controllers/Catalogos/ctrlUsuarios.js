@@ -24,7 +24,7 @@ appBelcebu.controller('ctrlUsuariosLista', ['$scope', 'facUsuarios',
             data: 'Usuarios',
             columnDefs: [
 
-                { field: "Nombre", displayName: "Nombre",  cellTemplate: '<div style="text-align:left;"><a ui-sref="Usuarios({Id:row.entity[\'UsuarioId\']})"> {{row.entity[col.field]}}</a></div>' },
+                { field: "Nombre", displayName: "Nombre", cellTemplate: '<div  style="text-align:left;"><a ui-sref="Usuarios({Id:row.entity[\'UsuarioId\']})"> {{row.entity[col.field]}}</a></div>' },
                 { field: "Usuario", displayName: "Usuario"}
 
 
@@ -37,20 +37,57 @@ appBelcebu.controller('ctrlUsuariosLista', ['$scope', 'facUsuarios',
 
 //Controlador para la captura de usuarios
 
-appBelcebu.controller('ctrlUsuarios', ['$scope', 'facUsuarios','$stateParams',
-    function ($scope, facUsuarios, $stateParams) {
+appBelcebu.controller('ctrlUsuarios', ['$scope', 'facUsuarios','$stateParams','$state',
+    function ($scope, facUsuarios, $stateParams, $state) {
 
         //#region Variables
         $scope.Datos = {};
 
         //#endregion
 
-        //#region
+
+        //#region Obtenemos el id del usuario
+        var UsuarioId = $stateParams.Id;
+        //#endregion
+
+        //#region carga los datos al formulario
+        $scope.GetUsuario = function () {
+            //obtiene la información de un usuario x id
+            facUsuarios.GetUsuario($stateParams.Id).
+                success(function (data, status) {
+                    var Respuesta = eval('(' + data.d + ')');
+                    if (Respuesta.root == undefined || Respuesta.root == null) { // se valida que se tenga datos
+                        $scope.Datos = Respuesta;
+                    } else {
+                        $scope.Datos = Respuesta.root.registros;
+                    }
+                }).
+                error(function (data, status) {
+                    alert(data.Message);
+                });
+        }
+        //#endregion
+
+        //#region Validamos si es un usuario existente, ejecutamos la api para cargar el formulario con los datos del usuario existente
+        if ($stateParams.Id > 0 || $stateParams != undefined) {
+            $scope.GetUsuario();
+        }
+        //#endregion
+
+
+        //#region Guarda el usuario
         $scope.Guardar = function () {
+            //validamos que los datos obligatorios tengan datos
+            if ($scope.frmDatos.$valid == false) {
+                alert('favor, capture los campos obligatorios para guardar la información')
+                return;
+            }
 
             var DatosMaestro = {};
 
-            DatosMaestro.UsuarioId = $scope.Datos.UsuarioId || 0;
+
+
+            DatosMaestro.UsuarioId = UsuarioId || 0;
             DatosMaestro.Nombre = $scope.Datos.Nombre || '';
             DatosMaestro.Usuario = $scope.Datos.Usuario || '';
             DatosMaestro.Pwd = $scope.Datos.Pwd || '';
@@ -60,7 +97,14 @@ appBelcebu.controller('ctrlUsuarios', ['$scope', 'facUsuarios','$stateParams',
 
 
             var t = [];
-            t.push(DatosMaestro);
+            t.push(DatosMaestro);// convertimos el objeto a un array
+
+            facUsuarios.AddUsuario(UsuarioId, angular.toJson(t)).
+                success(function (data, status) {
+                    $scope.Guardado = eval(data.d);
+                    alert('Proceso Completado Correctamente');
+                    $state.go('UsuariosLista');
+                })
 
         }
         //#endregion

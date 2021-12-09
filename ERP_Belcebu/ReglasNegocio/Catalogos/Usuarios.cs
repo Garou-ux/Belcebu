@@ -55,8 +55,16 @@ namespace ERP_Belcebu.ReglasNegocio.Catalogos
                     string sMaestro = "";
                     DataSet dsMaestro = new DataSet();
                     dsMaestro.DataSetName = "DocumentElement";
-                    dtMaestro.TableName = "";
+                    dtMaestro.TableName = "Table1";
+                    dsMaestro.Tables.Add(dtMaestro);
+                    //Aqui convertimos el dataset en xml y lo mandamos al stored como parametro
+                    StringWriter swMaestro = new StringWriter();
+                    dsMaestro.WriteXml(swMaestro);
+                    sMaestro = swMaestro.ToString();
+                    cmd.Parameters.AddWithValue("@Maestro",sMaestro);
                 }
+                dt = new DataTable();
+                da.Fill(dt);
 
                 return dt;
             }
@@ -65,7 +73,36 @@ namespace ERP_Belcebu.ReglasNegocio.Catalogos
         #endregion
 
         #region Get
-
+        // Obtenemos el usuario x Id
+        public static XmlDocument GetUsuario(int UsuarioId)
+        {
+            XmlDocument xml = new XmlDocument();
+            using (SqlConnection con = new SqlConnection(Servidor.Servidor.Conn()))
+            {
+                con.Open();
+                try
+                {
+                    string query = "Usuarios.GetUsuario";
+                    SqlCommand cmd = new SqlCommand(query, con);
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.AddWithValue("@UsuarioId", UsuarioId);
+                    //Obtenemos el xml desde sql server
+                    XmlReader xmlSQL = cmd.ExecuteXmlReader();
+                    //Creamos el objeto que va a guardar el xml
+                    xml = new XmlDocument();
+                    //guardamos el xml que obtuvimos de sql
+                    xml.Load(xmlSQL);
+                    //cerramos el objeto
+                    xmlSQL.Close();
+                   
+                }
+                catch (Exception )
+                {
+                    xml = null;
+                }
+                return xml;
+            }
+        }
         #endregion
 
     }

@@ -29,6 +29,9 @@ namespace ERP_Belcebu.Ws.Catalogos
         //    return "Hello World";
         //}
 
+
+
+
         #region List
 
         [WebMethod]
@@ -42,6 +45,50 @@ namespace ERP_Belcebu.Ws.Catalogos
            
 
             return resultado;
+
+        }
+
+        #endregion
+
+
+
+        #region Add
+        //Agrega un nuevo usuario
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json, XmlSerializeString =false)]
+        public string AddUsuario(int UsuarioId, string Maestro)
+        {
+            //Convierte los datos del maestro a datatable
+            string result = "";
+            DataTable dtMaestro = new DataTable();
+            dtMaestro = JsonConvert.DeserializeObject<DataTable>(Maestro);
+
+            //Llama a la regla de negocio
+            DataTable dt = ReglasNegocio.Catalogos.Usuarios.AddUsuario(UsuarioId,dtMaestro);
+            result = JsonConvert.SerializeObject(dt, new JavaScriptDateTimeConverter());
+
+            return result;
+
+        }
+        #endregion
+
+        #region Get
+
+        //Obtenemos un usuario xd id
+        [WebMethod]
+        [ScriptMethod(ResponseFormat =ResponseFormat.Json, XmlSerializeString =false)]
+
+        public string GetUsuario(int UsuarioId)
+        {
+            string result = "";
+            XmlDocument xml = ReglasNegocio.Catalogos.Usuarios.GetUsuario(UsuarioId);
+
+            if(xml == null) { result = ""; } 
+           else {
+                result = JsonConvert.SerializeXmlNode(xml);
+            }
+
+            return result;
 
         }
 
