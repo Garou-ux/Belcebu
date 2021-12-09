@@ -112,6 +112,20 @@ CREATE TABLE TblSolicitudCompraDet(
 	end
 	go
 
+	if not exists (select * from INFORMATION_SCHEMA.TABLES WHERE TABLE_NAME = 'TblCodigosOrdenTrabajo' )
+begin
+CREATE TABLE TblCodigosOrdenTrabajo(
+	[CodigoOrdenTrabajoId] [int] IDENTITY(1,1) NOT NULL primary key,
+	[Descripcion] [varchar](200) NULL,
+	[Abreviatura] [varchar](50) NULL,
+	[Comentario] [varchar](500) NULL,
+	[sts] [int] NULL,
+	[nivelOperacion] [int] NULL,
+	[Uso] [bit] NULL
+	)
+end
+go
+
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[Usuarios].[AddUsuario]') AND type in (N'P', N'PC'))
 DROP PROCEDURE [Usuarios].[AddUsuario]
 GO
