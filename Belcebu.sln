@@ -1,9 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31829.152
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31919.166
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ERP_Belcebu", "ERP_Belcebu\ERP_Belcebu.csproj", "{223BE85F-877E-4D06-9AC6-B976C3C27695}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Daco", "Daco\Daco.csproj", "{F1EDE8B1-6D55-4E6C-A969-764C4DDBC0BA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{223BE85F-877E-4D06-9AC6-B976C3C27695}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{223BE85F-877E-4D06-9AC6-B976C3C27695}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{223BE85F-877E-4D06-9AC6-B976C3C27695}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{223BE85F-877E-4D06-9AC6-B976C3C27695}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F1EDE8B1-6D55-4E6C-A969-764C4DDBC0BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F1EDE8B1-6D55-4E6C-A969-764C4DDBC0BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F1EDE8B1-6D55-4E6C-A969-764C4DDBC0BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F1EDE8B1-6D55-4E6C-A969-764C4DDBC0BA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

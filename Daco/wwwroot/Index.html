@@ -1,0 +1,280 @@
+﻿
+<!------ Include the above in your HEAD tag ---------->
+
+<!DOCTYPE html>
+<html lang="en" ng-app="ERP_Belcebu" >
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#9d4edd">
+    <title>Mayans</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
+    <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+    <!--Menu-->
+    <!--<link href="Content/Menu.css" rel="stylesheet" />-->
+    <link href="Content/Menu.css" rel="stylesheet" />
+    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!--Fin Menu-->
+
+
+
+</head>
+
+<body>
+
+    <!--<a ui-sref="Usuarios">Usuarios</a>-->
+    <!--<ui-view></ui-view>-->
+
+    <div class="page-wrapper chiller-theme toggled">
+        <a id="show-sidebar" class="btn btn-sm btn-dark" href="#">
+            <i class="fas fa-bars"></i>
+        </a>
+        <nav id="sidebar" class="sidebar-wrapper">
+            <div class="sidebar-content">
+                <div class="sidebar-brand">
+                    <a>Nombre Compañia</a>
+
+                    <div id="close-sidebar">
+                        <i class="fas fa-times"></i>
+                    </div>
+                </div>
+                <div class="sidebar-header">
+                    <div class="user-pic">
+                        <!--Aqui ira el logo de la compañia que use el sistema-->
+                        <img class="img-responsive img-rounded" src="/Images/user.png"
+                             alt="User picture">
+                    </div>
+                    <div class="user-info">
+                        <span class="user-name">
+                            Nombre
+                            <strong>Usuario</strong>
+                        </span>
+                        <span class="user-role">Rol de Usuario</span>
+                        <span class="user-status">
+                            <i class="fa fa-circle"></i>
+                            <span>Online</span>
+                        </span>
+                    </div>
+                </div>
+                <!--sidebar-header-->
+                <!--<div class="sidebar-search"> omitimos la busqueda por el momento
+                    <div>
+                        <div class="input-group">
+                            <input type="text" class="form-control search-menu" placeholder="Search...">
+                            <div class="input-group-append">
+                                <span class="input-group-text">
+                                    <i class="fa fa-search" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>-->
+                <!--sidebar-search-->
+                <div class="sidebar-menu">
+                    <ul>
+                        <li class="header-menu">
+                            <span>General</span>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="#">
+                                <i class="fa fa-tachometer-alt"></i>
+                                <span>Kardex</span>
+                                <span class="badge badge-pill badge-warning"></span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            Kardex Ordenes de Compra
+
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#"> Kardex Ordenes de Trabajo</a>
+                                    </li>
+                                    <li>
+                                        <a href="#"> Kardex Cumplimiento de Entregas</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <!--<li class="sidebar-dropdown"> el e-commerce lo dejamos para despues, cuando aprendamos lo del timbrado
+                            <a href="#">
+                                <i class="fa fa-shopping-cart"></i>
+                                <span>E-commerce</span>
+                                <span class="badge badge-pill badge-danger">3</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a href="#">
+                                            Products
+
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Orders</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Credit cart</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>-->
+                        <li class="sidebar-dropdown">
+                            <a href="#">
+                                <i class="fa fa-cog"></i>
+                                <span>Catalogos</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a ui-sref="UsuariosLista" ui-sref-active="active">Usuarios</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Clientes</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Proveedores</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Codigos de Estatus para Orden de trabajo</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Productos</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="sidebar-dropdown">
+                            <a href="#">
+                                <i class="fa fa-chart-line"></i>
+                                <span>Procesos</span>
+                            </a>
+                            <div class="sidebar-submenu">
+                                <ul>
+                                    <li>
+                                        <a ui-sref="SolicitudCompraLista" ui-sref-active="active" title="">Solicitud de compra</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Ordenes de Trabajo</a>
+                                    </li>
+
+                                    <li>
+                                        <a href="#">Requisicion de Compra</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Orden de Compra</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+
+                        <li class="header-menu">
+                            <span></span>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-book"></i>
+                                <span>Cotización</span>
+                                <!--<span class="badge badge-pill badge-primary">Beta</span>-->
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-calendar"></i>
+                                <span>Vencimientos</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fa fa-folder"></i>
+                                <span>Carga de Dibujos</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <!--sidebar-menu-->
+            </div>
+            <!--sidebar-content-->
+
+            <div class="sidebar-footer">
+                <a href="#" title="Notificaciones">
+                    <i class="fa fa-bell"></i>
+                    <span class="badge badge-pill badge-warning notification">3</span>
+                </a>
+                <a href="#" title="Mensajes">
+                    <i class="fa fa-envelope"></i>
+                    <span class="badge badge-pill badge-success notification">7</span>
+                </a>
+                <a href="#">
+                    <i class="fa fa-cog"></i>
+                    <span class="badge-sonar"></span>
+                </a>
+                <a href="#" title="Cerrar Sesión">
+                    <i class="fa fa-power-off"></i>
+                </a>
+            </div>
+        </nav>
+        <!--sidebar-wrapper-->
+        <main class="page-content" ui-view>
+            <!--<div class="container-fluid">-->
+            <h2>Contenido de pagina</h2>
+            <hr>
+            <div class="row">
+            </div>
+            <footer class="text-center">
+                <strong> Creado</strong>
+            </footer>
+            <!--</div>-->
+        </main>
+        <!--page-content"-->
+    </div>
+
+    <!--page-wrapper-->
+    <!--Scripts-->
+   
+    <script src="Scripts/angular.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.18/angular-ui-router.js"></script>
+    <script src="CustomScripts/app.js"></script>
+    <link data-require="ng-grid@*" data-semver="2.0.14" rel="stylesheet" href="//cdn.rawgit.com/angular-ui/ng-grid/v2.0.14/ng-grid.css" />
+    <script data-require="ng-grid@*" data-semver="2.0.14" src="//cdn.rawgit.com/angular-ui/ng-grid/v2.0.14/build/ng-grid.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <script src="CustomScripts/StyleMenu.js"></script>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <!--Fin Scripts-->
+    <!--Factorys-->
+    <!-- Catalogos -->
+    <script src="CustomScripts/Factorys/Catalogos/facUsuarios.js"></script>
+    <!-- FinCatalogos -->
+    <!-- Procesos -->
+    <script src="CustomScripts/Factorys/Procesos/facSolicitudCompra.js"></script>
+    <!-- FinProcesos -->
+    <!--Fin factorys-->
+    <!--Controladores-->
+    <!-- Catalogos -->
+    <script src="CustomScripts/Controllers/Catalogos/ctrlUsuarios.js"></script>
+    <!-- FinCatalogos -->
+    <!-- Procesos -->
+    <script src="CustomScripts/Controllers/Procesos/ctrlSolicitudCompra.js"></script>
+    <!-- FinProcesos -->
+    <!--Fin Controladores-->
+
+
+
+
+
+
+</body>
+
+</html>
