@@ -6,7 +6,7 @@ appBelcebu.service('ServiceUsuarios', function ($http) {
     //#region List
     //Obtenemos la lista de usuarios
     this.getUsuarios = function () {
-        return $http.get("api/ctrlUsuarios")
+        return $http.get("api/Usuarios/ListUsuarios")
     }
 
     //#endregion
@@ -15,7 +15,7 @@ appBelcebu.service('ServiceUsuarios', function ($http) {
     this.AddUsuarios = function (UsuarioId, Maestro) {
         var data = {UsuarioId: UsuarioId, Maestro: Maestro}
         return $http({
-            url: 'api/ctrlUsuarios',
+            url: 'api/Usuarios/AddUsuarios',
             method: 'post',
             params: data
         });
@@ -24,7 +24,14 @@ appBelcebu.service('ServiceUsuarios', function ($http) {
 
     //#region Get
     //Ontenemos un usuario x id
-
+    this.GetUsuario = function (UsuarioId) {
+        var data = { UsuarioId: UsuarioId }
+        return $http({
+            url: 'api/Usuarios/GetUsuario',
+            method: 'get',
+            params : data
+        });
+    }
     //#endregion
 
 

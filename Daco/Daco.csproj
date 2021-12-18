@@ -7,11 +7,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\Views\extra\**" />
+    <Compile Remove="wwwroot\Views\reportes\**" />
+    <Content Remove="wwwroot\Views\extra\**" />
+    <Content Remove="wwwroot\Views\reportes\**" />
+    <EmbeddedResource Remove="wwwroot\Views\extra\**" />
+    <EmbeddedResource Remove="wwwroot\Views\reportes\**" />
+    <None Remove="wwwroot\Views\extra\**" />
+    <None Remove="wwwroot\Views\reportes\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="angularjs" Version="1.4.7" />
     <PackageReference Include="bootstrap" Version="5.1.2" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="6.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.1" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.3" />
     <PackageReference Include="System.ServiceModel.Duplex" Version="4.8.*" />
     <PackageReference Include="System.ServiceModel.Http" Version="4.8.*" />
@@ -29,8 +42,6 @@
     <Folder Include="wwwroot\CustomScripts\Controllers\Reportes\" />
     <Folder Include="wwwroot\CustomScripts\Factorys\Extra\" />
     <Folder Include="wwwroot\CustomScripts\Factorys\Reportes\" />
-    <Folder Include="wwwroot\Views\extra\" />
-    <Folder Include="wwwroot\Views\reportes\" />
   </ItemGroup>
 
 </Project>

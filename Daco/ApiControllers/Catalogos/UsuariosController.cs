@@ -5,28 +5,36 @@ using System.Data;
 using System.Data.SqlClient;
 using Newtonsoft.Json.Converters;
 using Newtonsoft.Json;
+using System.Xml;
+using Daco.Servidor;
+using Daco.Models;
+using Microsoft.EntityFrameworkCore;
+
 namespace Daco.Controllers.Catalogos
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class ctrlUsuarios : Controller
+    public class UsuariosController : ControllerBase
     {
+        
 
         #region List
-        [HttpGet("", Name = "ListUsuarios")]
+        [HttpGet]
+        [Route("ListUsuarios")]
 
-        public string ListUsuarios()
+        public  string ListUsuarios()
         {
-            string resultado = "";
+            
             DataTable dt = ReglasNegocio.Catalogos.Usuarios.ListUsuarios();
-            resultado = JsonConvert.SerializeObject(dt, new JavaScriptDateTimeConverter());
-            return resultado;
+          string  resultado = JsonConvert.SerializeObject(dt, new JavaScriptDateTimeConverter());
+           return resultado;
         }
         #endregion
 
 
         #region Add
-        [HttpPost(Name ="AddUsuarios")]
+        [HttpPost]
+        [Route("AddUsuario")]
         public string AddUsuario(int UsuarioId, string Maestro)
         {
             //Convierte los datos del maestro a datatable
@@ -40,6 +48,19 @@ namespace Daco.Controllers.Catalogos
 
             return result;
 
+        }
+        #endregion
+
+        #region Get
+        [HttpGet]
+        [Route("GetUsuario")]
+        public string GetUsuario(int UsuarioId)
+        {
+            string resultado = "";
+           
+            XmlDocument xml = ReglasNegocio.Catalogos.Usuarios.GetUsuario(UsuarioId);
+            resultado = JsonConvert.SerializeXmlNode(xml);
+            return resultado;
         }
         #endregion
     }

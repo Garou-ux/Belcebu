@@ -7,41 +7,20 @@ appBelcebu.controller('ctrlUsuariosLista', ['$scope', 'facUsuarios','ServiceUsua
         //#region Variables
         $scope.Usuarios = [];
         //#endregion
-        getAll();
 
-        function getAll() {
-            var servCall = ServiceUsuarios.getUsuarios();
-            servCall.then(function (d) {
-                $scope.subscriber = d.data;
+        fnObtenerListaUsuarios(); //Ejecutamos la funcion que cargara la lista de usuarios
+
+        //#region funcion para Obtener la lista de usuarios
+        function fnObtenerListaUsuarios() {
+            var CallUsuariosService = ServiceUsuarios.getUsuarios();
+            CallUsuariosService.then(function (d) {
+                $scope.ListUsuarios = d.data;
             }, function (error) {
-                $log.error('Oops! Something went wrong while fetching the data.')
+                alert('Error');
             })
         }
-        //#region Obtenemos la lista de usuarios y la guardamos en el array $scope.Usuarios
-        //facUsuarios.ListUsuarios().
-        //    success(function (data, status) {
-        //        $scope.Usuarios = eval(data.d);
-        //    }).
-        //    error(function (data, status) {
-        //        alert(data.Message);
-        //    });
-
         //#endregion
-
-        //#region Grid donde se mostrara la lista de los usuarios que pertenecen a esa empresa
-        $scope.DetalleLista = {
-            data: 'subscriber',
-            columnDefs: [
-
-                { field: "Nombre", displayName: "Nombre", cellTemplate: '<div  style="text-align:left;"><a ui-sref="Usuarios({Id:row.entity[\'UsuarioId\']})"> {{row.entity[col.field]}}</a></div>' },
-                { field: "Usuario", displayName: "Usuario"}
-
-
-            ],
-            enableRowSelection: false
-        };
-        //#endregion
-
+     
     }]);
 
 //Controlador para la captura de usuarios
@@ -50,7 +29,7 @@ appBelcebu.controller('ctrlUsuarios', ['$scope', 'facUsuarios', '$stateParams', 
     function ($scope, facUsuarios, $stateParams, $state, ServiceUsuarios) {
 
         //#region Variables
-        $scope.Datos = {};
+        $scope.Datos = [];
 
         //#endregion
 
@@ -59,28 +38,29 @@ appBelcebu.controller('ctrlUsuarios', ['$scope', 'facUsuarios', '$stateParams', 
         var UsuarioId = $stateParams.Id;
         //#endregion
 
-        ////#region carga los datos al formulario
-        //$scope.GetUsuario = function () {
-        //    //obtiene la información de un usuario x id
-        //    facUsuarios.GetUsuario($stateParams.Id).
-        //        success(function (data, status) {
-        //            var Respuesta = eval('(' + data.d + ')');
-        //            if (Respuesta.root == undefined || Respuesta.root == null) { // se valida que se tenga datos
-        //                $scope.Datos = Respuesta;
-        //            } else {
-        //                $scope.Datos = Respuesta.root.registros;
-        //            }
-        //        }).
-        //        error(function (data, status) {
-        //            alert(data.Message);
-        //        });
-        //}
-        ////#endregion
+     
+        fnGetUsuario();
+        //#region carga los datos al formulario
+        function fnGetUsuario() {
+            var CallUsuariosService = ServiceUsuarios.GetUsuario(UsuarioId);
+            CallUsuariosService.then(function (d) {
+                var Respuesta = d.data;
+                if (Respuesta.root == undefined || Respuesta.root == null) { // se valida que se tenga datos
+                        $scope.Datos = Respuesta;
+                    } else {
+                        $scope.Datos = Respuesta.root.registros;
+                    }
+
+            }, function (error) {
+                alert('Error');
+            })
+        }
+
+       
+        //#endregion
 
         ////#region Validamos si es un usuario existente, ejecutamos la api para cargar el formulario con los datos del usuario existente
-        //if ($stateParams.Id > 0 || $stateParams != undefined) {
-        //    $scope.GetUsuario();
-        //}
+       
         ////#endregion
 
 
@@ -113,7 +93,8 @@ appBelcebu.controller('ctrlUsuarios', ['$scope', 'facUsuarios', '$stateParams', 
                 $scope.Guardado = response.data;
                 alert('Proceso Completado Correctamente');
             }, function (error) {
-               alert('Cambiar por el mensaje de error del stored')
+                $scope.Guardado[0].MensajeError;
+                alert($scope.Guardado[0].MensajeError);
             })
         
 

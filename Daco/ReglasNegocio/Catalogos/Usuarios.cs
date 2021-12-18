@@ -94,9 +94,9 @@ namespace Daco.ReglasNegocio.Catalogos
                     xml.Load(xmlSQL);
                     //cerramos el objeto
                     xmlSQL.Close();
-                   
+
                 }
-                catch (Exception )
+                catch (Exception)
                 {
                     xml = null;
                 }
