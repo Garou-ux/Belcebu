@@ -12,6 +12,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Daco.Controllers.Catalogos
 {
+    //Esta api servira para hacer peticiones a todo lo relacionado sobre usuarios
     [Route("api/[controller]")]
     [ApiController]
     public class UsuariosController : ControllerBase

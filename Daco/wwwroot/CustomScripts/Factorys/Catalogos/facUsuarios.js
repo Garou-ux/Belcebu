@@ -15,7 +15,7 @@ appBelcebu.service('ServiceUsuarios', function ($http) {
     this.AddUsuarios = function (UsuarioId, Maestro) {
         var data = {UsuarioId: UsuarioId, Maestro: Maestro}
         return $http({
-            url: 'api/Usuarios/AddUsuarios',
+            url: 'api/Usuarios/AddUsuario',
             method: 'post',
             params: data
         });
